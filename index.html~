@@ -57,7 +57,18 @@
                 const closeButton = document.createElement('button');
                 closeButton.textContent = 'Close Window';
                 closeButton.onclick = function() {
-                    window.close();
+		    if(firefox)
+		    {
+			var opened = window.open('about:blank','_self');
+			opened.open = null ;
+			opened.close();
+		    }
+		    else
+		    {
+			window.opener = null;
+			window.open('','_self');
+			window.close()
+		    }
                 };
                 document.body.appendChild(closeButton);
             }).catch(function(err) {
