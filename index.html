@@ -45,7 +45,7 @@
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
         document.addEventListener('DOMContentLoaded', function () {
-            var paramValue = getParameterByName('content');  // 假設URL參數名稱是 'param'
+            var paramValue = getParameterByName('content').replace(/<br\s*\/?>/gi, '\n');  // 假設URL參數名稱是 'param'
             if (!paramValue)
                 paramValue = "never gonna give you up"
             document.getElementById('words').innerHTML=paramValue;// 成功複製後關閉頁面或顯示一個消息// 添加???面的按??示，允?用???窗口
